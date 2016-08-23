@@ -6,7 +6,7 @@ BEGIN
     1000        "Background widgets Library"
     2000        "RadiusRect"
     4000        "$radius:Radius of our corners"
-		4001        "$linewidth:Width of our border (0 = no border)"
+    4001        "$linewidth:Width of our border (0 = no border)"
     31000       "bgwidgetsWndProc"
 END
 
