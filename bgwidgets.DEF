@@ -1,0 +1,4 @@
+LIBRARY         bgwidgets
+EXPORTS
+    bgwidgetsWndProc	@1
+ 
