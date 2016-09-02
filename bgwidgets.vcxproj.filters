@@ -18,12 +18,18 @@
     <ClInclude Include="src\RadiusRect.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="src\donut.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bgwidgets.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\RadiusRect.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\donut.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="english.lproj\bgwidgets.bmp">
+      <Filter>resources</Filter>
+    </Image>
+    <Image Include="english.lproj\donut.bmp">
       <Filter>resources</Filter>
     </Image>
   </ItemGroup>

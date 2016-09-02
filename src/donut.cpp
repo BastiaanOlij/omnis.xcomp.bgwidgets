@@ -1,4 +1,9 @@
 #include "donut.h"
+#include "math.h"
+
+#ifndef pi
+#define pi 3.141592653589793238462643
+#endif
 
 // our properties
 ECOproperty DonutProperties[] = {

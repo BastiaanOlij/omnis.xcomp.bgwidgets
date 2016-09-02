@@ -286,10 +286,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\bgwidgets.h" />
+    <ClInclude Include="src\donut.h" />
     <ClInclude Include="src\RadiusRect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bgwidgets.cpp" />
+    <ClCompile Include="src\donut.cpp" />
     <ClCompile Include="src\RadiusRect.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="english.lproj\bgwidgets.bmp" />
+    <Image Include="english.lproj\donut.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="english.lproj\bgwidgets.rc" />
