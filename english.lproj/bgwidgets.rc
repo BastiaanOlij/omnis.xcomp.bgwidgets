@@ -1,13 +1,18 @@
-
 1   BITMAP  DISCARDABLE     "RADIUSRECT.BMP"
+// 2   BITMAP  DISCARDABLE     "DONUT.BMP"
 
 STRINGTABLE DISCARDABLE 
 BEGIN
     1000        "Background widgets Library"
     2000        "RadiusRect"
+    2001        "Donut"
     4000        "$radius:Radius of our corners"
     4001        "$linewidth:Width of our border (0 = no border)"
+    4010        "$innerradius:Inner radius of donut"
+    4011        "$basecolor:Base color of donut"
+    4012        "$colorindex:Index into our color array"
+    4013        "$colorangle:Angle at which to start the color"
+    4014        "$color:Color from this angle forward"
+    4015        "$offsetangle:Offset angle"
     31000       "bgwidgetsWndProc"
 END
-
-

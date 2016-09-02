@@ -24,10 +24,12 @@
 		96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		96CA4E5A0907E8CC00C234AA /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		96CA4E660907EB0700C234AA /* u_complib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CA4E650907EB0700C234AA /* u_complib.framework */; };
+		ACAB36981D79252000456217 /* donut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACAB36971D79252000456217 /* donut.cpp */; };
+		ACAB369B1D79310E00456217 /* donut.bmp in Resources */ = {isa = PBXBuildFile; fileRef = ACAB36991D79310E00456217 /* donut.bmp */; };
+		ACAB369D1D7932DC00456217 /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = ACE1947C1D6C019300AD049F /* bgwidgets.rc */; };
 		ACE1947A1D6C017900AD049F /* bgwidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACE194781D6C017900AD049F /* bgwidgets.cpp */; };
 		ACE1947B1D6C017900AD049F /* RadiusRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACE194791D6C017900AD049F /* RadiusRect.cpp */; };
 		ACE194801D6C019300AD049F /* radiusrect.bmp in Resources */ = {isa = PBXBuildFile; fileRef = ACE1947E1D6C019300AD049F /* radiusrect.bmp */; };
-		ACE194811D6C019A00AD049F /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = ACE1947C1D6C019300AD049F /* bgwidgets.rc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -55,16 +57,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		96CA4E610907E8CC00C234AA /* bgwidgets.u_xcomp */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bgwidgets.u_xcomp; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CA4E650907EB0700C234AA /* u_complib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = u_complib.framework; path = ../complib/u_complib.framework; sourceTree = SOURCE_ROOT; };
+		ACAB36961D79250700456217 /* donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = donut.h; path = bgwidgets.xcodeproj/../src/donut.h; sourceTree = "<group>"; };
+		ACAB36971D79252000456217 /* donut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = donut.cpp; path = bgwidgets.xcodeproj/../src/donut.cpp; sourceTree = "<group>"; };
+		ACAB36A21D7933CB00456217 /* english */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = english; path = english.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ACAB36A31D7933D600456217 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/radiusrect.bmp; sourceTree = "<group>"; };
+		ACAB36A41D7933DC00456217 /* english */ = {isa = PBXFileReference; explicitFileType = text; name = english; path = english.lproj/bgwidgets.rc; sourceTree = "<group>"; };
+		ACAB36A51D7933E400456217 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/donut.bmp; sourceTree = "<group>"; };
 		ACE194761D6C014A00AD049F /* bgwidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bgwidgets.h; path = src/bgwidgets.h; sourceTree = "<group>"; };
 		ACE194771D6C014A00AD049F /* RadiusRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadiusRect.h; path = src/RadiusRect.h; sourceTree = "<group>"; };
 		ACE194781D6C017900AD049F /* bgwidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bgwidgets.cpp; path = src/bgwidgets.cpp; sourceTree = "<group>"; };
 		ACE194791D6C017900AD049F /* RadiusRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadiusRect.cpp; path = src/RadiusRect.cpp; sourceTree = "<group>"; };
-		ACE1947D1D6C019300AD049F /* english */ = {isa = PBXFileReference; explicitFileType = text; name = english; path = english.lproj/bgwidgets.rc; sourceTree = "<group>"; };
-		ACE1947F1D6C019300AD049F /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/radiusrect.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ACAB36991D79310E00456217 /* donut.bmp */,
 				ACE1947C1D6C019300AD049F /* bgwidgets.rc */,
 				ACE1947E1D6C019300AD049F /* radiusrect.bmp */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
@@ -114,6 +120,7 @@
 		08FB77ADFE841716C02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				ACAB36971D79252000456217 /* donut.cpp */,
 				ACE194781D6C017900AD049F /* bgwidgets.cpp */,
 				ACE194791D6C017900AD049F /* RadiusRect.cpp */,
 			);
@@ -133,6 +140,7 @@
 			children = (
 				ACE194761D6C014A00AD049F /* bgwidgets.h */,
 				ACE194771D6C014A00AD049F /* RadiusRect.h */,
+				ACAB36961D79250700456217 /* donut.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 				French,
 				German,
 				english,
+				en,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* xrandom */;
 			projectDirPath = "";
@@ -192,9 +201,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACE194811D6C019A00AD049F /* bgwidgets.rc in Resources */,
+				ACAB369B1D79310E00456217 /* donut.bmp in Resources */,
 				96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */,
 				ACE194801D6C019300AD049F /* radiusrect.bmp in Resources */,
+				ACAB369D1D7932DC00456217 /* bgwidgets.rc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE1947A1D6C017900AD049F /* bgwidgets.cpp in Sources */,
+				ACAB36981D79252000456217 /* donut.cpp in Sources */,
 				ACE1947B1D6C017900AD049F /* RadiusRect.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,15 +235,23 @@
 		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C167EFE841241C02AAC07 /* English */,
+				ACAB36A21D7933CB00456217 /* english */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ACAB36991D79310E00456217 /* donut.bmp */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACAB36A51D7933E400456217 /* english */,
+			);
+			name = donut.bmp;
 			sourceTree = "<group>";
 		};
 		ACE1947C1D6C019300AD049F /* bgwidgets.rc */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ACE1947D1D6C019300AD049F /* english */,
+				ACAB36A41D7933DC00456217 /* english */,
 			);
 			name = bgwidgets.rc;
 			sourceTree = "<group>";
@@ -240,7 +259,7 @@
 		ACE1947E1D6C019300AD049F /* radiusrect.bmp */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ACE1947F1D6C019300AD049F /* english */,
+				ACAB36A31D7933D600456217 /* english */,
 			);
 			name = radiusrect.bmp;
 			sourceTree = "<group>";

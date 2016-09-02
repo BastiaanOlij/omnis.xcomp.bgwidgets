@@ -1,5 +1,6 @@
 #include "bgwidgets.h"
 #include "RadiusRect.h"
+#include "donut.h"
 
 // Your generic object constructor
 bgwidget::bgwidget(HWND pHwnd, bool pUseHwnd) {
@@ -40,6 +41,12 @@ qbool bgwidget::getProperty(qlong pPropId, EXTfldval * pRetVal) {
     return 0L;
 };
 
+void bgwidget::UpdateProperty(qlong pPropId) {
+    if (mUseHwnd) {
+        ECOupdatePropInsp(mHwnd, pPropId);
+    };
+};
+
 // You need to paint your control
 void bgwidget::paint(HDC hdc, qrect* pArea) {
 	// just a placeholder
@@ -74,7 +81,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_GETVERSION ask for version info
 		case ECM_GETVERSION: {
 			qshort	major = OMNISSDK;
-			qshort	minor = 1;
+			qshort	minor = 2;
 
 			return ECOreturnVersion(major, minor);
 		} break;
@@ -83,14 +90,22 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_OBJCONSTRUCT - this is a message to create a new object.
 		case ECM_OBJCONSTRUCT: {
 			// Allocate a new object, for now always assume its radiusrect
-			bgwidget* object;
-			if (eci->mCompId == OBJECT_ID1) {
-				object = new radiusrect(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+			bgwidget* object = NULL;
+			switch (eci->mCompId) {
+                case RADIUSRECT_ID: {
+                    object = new radiusrect(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+                }; break;
+                case DONUT_ID: {
+                    object = new donut(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+                }; break;
+                default: break;
 			};
 
-			// and insert into a chain of objects. The OMNIS library will maintain this chain
-			ECOinsertObject( eci, hwnd, (void*)object );
-			return qtrue;
+            if (object != NULL) {
+                // and insert into a chain of objects. The OMNIS library will maintain this chain
+                ECOinsertObject( eci, hwnd, (void*)object );
+                return qtrue;
+            };
 		}; break;
 			
 		// ECM_OBJDESTRUCT - this is a message to inform you to delete the object
@@ -136,8 +151,13 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		case ECM_GETCOMPICON: {
 			// OMNIS will call you once per component for an icon.
 			// GENERIC_ICON is defined in the header and included in the resource file
-			if ( eci->mCompId==OBJECT_ID1 ) {
-				return ECOreturnIcon(gInstLib, eci, RADIUSRECT_ICON);
+			switch (eci->mCompId) {
+                case RADIUSRECT_ID: {
+                    return ECOreturnIcon(gInstLib, eci, RADIUSRECT_ICON);
+                }; break;
+                case DONUT_ID: {
+                    return ECOreturnIcon(gInstLib, eci, DONUT_ICON);
+                }; break;
 			};
 			return qfalse;
 		}; break;
@@ -152,8 +172,14 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		//																	cRepObjType_Basic	- a basic report object.
 		// 																	There are others 	- see BLYTH examples and headers
 		case ECM_GETCOMPID: {
-			if (wParam == 1) {
-				return ECOreturnCompID( gInstLib, eci, OBJECT_ID1, cObjType_Basic );
+			switch (wParam) {
+                case 1: {
+                    return ECOreturnCompID( gInstLib, eci, RADIUSRECT_ID, cObjType_Basic );
+                }; break;
+                case 2: {
+                    return ECOreturnCompID( gInstLib, eci, DONUT_ID, cObjType_Basic );
+                }; break;
+                default: break;
 			};
 			return 0L;
 		}; break;
@@ -162,7 +188,15 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// stuff for properties
         
 		case ECM_GETPROPNAME: {
-			return ECOreturnProperties(gInstLib, eci, RadiusRectProperties, 4 + rrectlast - 1); // add our 4 build in properties to our count
+            switch (eci->mCompId) {
+                case RADIUSRECT_ID: {
+                    return ECOreturnProperties(gInstLib, eci, RadiusRectProperties, 4 + rrectlast - 1); // add our 4 build in properties to our count
+                }; break;
+                case DONUT_ID: {
+                    return ECOreturnProperties(gInstLib, eci, DonutProperties, donutLast - 1);
+                }; break;
+                default: break;
+            };
 		}; break;
         
 		case ECM_PROPERTYCANASSIGN: {
