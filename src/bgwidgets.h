@@ -20,6 +20,8 @@
 class bgwidget {
 private:
 	HWND				mHwnd;			/* hwnd for our background object, ONLY valid in design! */
+    
+protected:
 	bool				mUseHwnd;		/* if true we can use mHwnd */
 
 public:

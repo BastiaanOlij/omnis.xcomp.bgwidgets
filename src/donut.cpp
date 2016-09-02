@@ -12,7 +12,7 @@ ECOproperty DonutProperties[] = {
     donutBaseColor,     4011,   fftInteger, EXTD_FLAG_PROPAPP | EXTD_FLAG_PWINDCOL, 0, 0, 0,
     donutColorIndex,    4012,   fftInteger, EXTD_FLAG_PROPAPP | EXTD_FLAG_RUNTIMEONLY, 0, 0, 0,
     donutColorAngle,    4013,   fftInteger, EXTD_FLAG_PROPAPP | EXTD_FLAG_RUNTIMEONLY, 0, 0, 0,
-    donutColor,         4014,   fftInteger, EXTD_FLAG_PROPAPP | EXTD_FLAG_PWINDCOL | EXTD_FLAG_RUNTIMEONLY, 0, 0, 0,
+    donutColor,         4014,   fftInteger, EXTD_FLAG_PROPAPP | EXTD_FLAG_RUNTIMEONLY, 0, 0, 0,
     donutOffsetAngle,   4015,   fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,
 };
 
@@ -156,7 +156,7 @@ void donut::paint(HDC hdc, qrect* pArea) {
     HBRUSH      brush = GDIcreateBrush(patFill);
     HBRUSH      wasBrush = GDIselectObject(hdc, brush);
     int         numPoints=0;
-    qpoint      center;
+    qpoint      center, offset;
     int         maxRadius;
     int         colorIndex = 0;
     float       startAngle = 0;
@@ -166,9 +166,15 @@ void donut::paint(HDC hdc, qrect* pArea) {
     // remember our current color
     wasColor = GDIgetTextColor(hdc);
 
-    // was just testing, seems fillpoly doesn't draw
-//    GDIsetTextColor(hdc, GDI_COLOR_QCYAN);
-//    GDIfillRoundRect(hdc, pArea, 4, 4, brush);
+    // workaround for SDK bug with GDIfillpoly
+    if (mUseHwnd) {
+        offset.h = 0;
+        offset.v = 0;
+    } else {
+        // omnis is supposed to adjust this but..
+        offset.h = pArea->left;
+        offset.v = pArea->top;
+    };
     
     // find our center
     center.h = pArea->width() / 2;
@@ -182,10 +188,10 @@ void donut::paint(HDC hdc, qrect* pArea) {
     };
     
     // start our circle
-    outerPoints[0].h = center.h + floor(sin(mOffsetAngle * pi / 180.0) * center.h);
-    outerPoints[0].v = center.v - floor(cos(mOffsetAngle * pi / 180.0) * center.v);
-    innerPoints[0].h = center.h + floor(sin(mOffsetAngle * pi / 180.0) * (center.h - mInnerRadius));
-    innerPoints[0].v = center.v - floor(cos(mOffsetAngle * pi / 180.0) * (center.v - mInnerRadius));
+    outerPoints[0].h = offset.h + center.h + floor(sin(mOffsetAngle * pi / 180.0) * center.h);
+    outerPoints[0].v = offset.v + center.v - floor(cos(mOffsetAngle * pi / 180.0) * center.v);
+    innerPoints[0].h = offset.h + center.h + floor(sin(mOffsetAngle * pi / 180.0) * (center.h - mInnerRadius));
+    innerPoints[0].v = offset.v + center.v - floor(cos(mOffsetAngle * pi / 180.0) * (center.v - mInnerRadius));
     numPoints++;
     
     while ((currAngle < 360.0) && (numPoints < 512)) {
@@ -214,10 +220,10 @@ void donut::paint(HDC hdc, qrect* pArea) {
         };
         
         // add our point
-        outerPoints[numPoints].h = center.h + floor(sin((mOffsetAngle + currAngle) * pi / 180.0) * center.h);
-        outerPoints[numPoints].v = center.v - floor(cos((mOffsetAngle + currAngle) * pi / 180.0) * center.v);
-        innerPoints[numPoints].h = center.h + floor(sin((mOffsetAngle + currAngle) * pi / 180.0) * (center.h - mInnerRadius));
-        innerPoints[numPoints].v = center.v - floor(cos((mOffsetAngle + currAngle) * pi / 180.0) * (center.v - mInnerRadius));
+        outerPoints[numPoints].h = offset.h + center.h + floor(sin((mOffsetAngle + currAngle) * pi / 180.0) * center.h);
+        outerPoints[numPoints].v = offset.v + center.v - floor(cos((mOffsetAngle + currAngle) * pi / 180.0) * center.v);
+        innerPoints[numPoints].h = offset.h + center.h + floor(sin((mOffsetAngle + currAngle) * pi / 180.0) * (center.h - mInnerRadius));
+        innerPoints[numPoints].v = offset.v + center.v - floor(cos((mOffsetAngle + currAngle) * pi / 180.0) * (center.v - mInnerRadius));
         numPoints++;
     };
 

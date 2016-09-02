@@ -1,6 +1,6 @@
 #include "bgwidgets.h"
 
-#define DONUT_MAX_COLORS 15
+#define DONUT_MAX_COLORS 512
 
 enum donutprop {
 	donutInnerRadius = 1,
