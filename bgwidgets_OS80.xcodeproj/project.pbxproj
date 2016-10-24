@@ -1,0 +1,389 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D7DE4B517CE03B300642BA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D7DE4B217CE03B300642BA9 /* InfoPlist.strings */; };
+		2DAD106F17BCEE60005A7F56 /* u_complib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAD106E17BCEE60005A7F56 /* u_complib.framework */; };
+		2DD7697817BBA5F4005F1CFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD7697717BBA5F4005F1CFB /* Cocoa.framework */; };
+		ACF13B9F1DBEC2BB008C0B02 /* bgwidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACF13B9C1DBEC2BB008C0B02 /* bgwidgets.cpp */; };
+		ACF13BA01DBEC2BB008C0B02 /* donut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACF13B9D1DBEC2BB008C0B02 /* donut.cpp */; };
+		ACF13BA11DBEC2BB008C0B02 /* RadiusRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACF13B9E1DBEC2BB008C0B02 /* RadiusRect.cpp */; };
+		ACF13BA41DBEC332008C0B02 /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = ACF13BA21DBEC2D0008C0B02 /* bgwidgets.rc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		2DDD8B9017F426C100F4E765 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.rc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(TEMP_FILE_DIR)/omnisrc/Localizable.strings",
+			);
+			script = "$DEVELOPER_TOOLS_DIR/omnisrc64.app/Contents/MacOS/omnisrc64 INPUT_FILE_PATH TEMP_FILE_DIR REZ_SEARCH_PATHS XCOMP\nif [ -f $TEMP_FILE_DIR/omnisrc/Bitmap.strings ]; then\ncp $TEMP_FILE_DIR/omnisrc/Bitmap.strings $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi\nshopt -s nullglob\nif [ ! -z \"`echo $TEMP_FILE_DIR/omnisrc/*.PNG`\" ]; then\ncp $TEMP_FILE_DIR/omnisrc/*.PNG $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXFileReference section */
+		2D7DE4B317CE03B300642BA9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DAD106E17BCEE60005A7F56 /* u_complib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = u_complib.framework; path = ../complib/u_complib.framework; sourceTree = "<group>"; };
+		2DD7697417BBA5F4005F1CFB /* bgwidgets.u_xcomp */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bgwidgets.u_xcomp; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD7697717BBA5F4005F1CFB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2DD7697A17BBA5F4005F1CFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2DD7697B17BBA5F4005F1CFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2DD7697C17BBA5F4005F1CFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ACF13B991DBEC2B1008C0B02 /* bgwidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bgwidgets.h; path = src/bgwidgets.h; sourceTree = "<group>"; };
+		ACF13B9A1DBEC2B1008C0B02 /* donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = donut.h; path = src/donut.h; sourceTree = "<group>"; };
+		ACF13B9B1DBEC2B1008C0B02 /* RadiusRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadiusRect.h; path = src/RadiusRect.h; sourceTree = "<group>"; };
+		ACF13B9C1DBEC2BB008C0B02 /* bgwidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bgwidgets.cpp; path = src/bgwidgets.cpp; sourceTree = SOURCE_ROOT; };
+		ACF13B9D1DBEC2BB008C0B02 /* donut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = donut.cpp; path = src/donut.cpp; sourceTree = SOURCE_ROOT; };
+		ACF13B9E1DBEC2BB008C0B02 /* RadiusRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadiusRect.cpp; path = src/RadiusRect.cpp; sourceTree = SOURCE_ROOT; };
+		ACF13BA31DBEC2D0008C0B02 /* english */ = {isa = PBXFileReference; explicitFileType = text; name = english; path = english.lproj/bgwidgets.rc; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DD7697117BBA5F4005F1CFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD7697817BBA5F4005F1CFB /* Cocoa.framework in Frameworks */,
+				2DAD106F17BCEE60005A7F56 /* u_complib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D3F845B17C50A43008A8E5D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				ACF13B991DBEC2B1008C0B02 /* bgwidgets.h */,
+				ACF13B9A1DBEC2B1008C0B02 /* donut.h */,
+				ACF13B9B1DBEC2B1008C0B02 /* RadiusRect.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		2D7DE4AF17CE02C100642BA9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACF13BA21DBEC2D0008C0B02 /* bgwidgets.rc */,
+				2D7DE4B217CE03B300642BA9 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2DD7696B17BBA5F4005F1CFB = {
+			isa = PBXGroup;
+			children = (
+				2D3F845B17C50A43008A8E5D /* Headers */,
+				2DD7697D17BBA5F4005F1CFB /* Source */,
+				2D7DE4AF17CE02C100642BA9 /* Resources */,
+				2DD7697617BBA5F4005F1CFB /* External Frameworks and Libraries */,
+				2DD7697517BBA5F4005F1CFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DD7697517BBA5F4005F1CFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DD7697417BBA5F4005F1CFB /* bgwidgets.u_xcomp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DD7697617BBA5F4005F1CFB /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2DD7697717BBA5F4005F1CFB /* Cocoa.framework */,
+				2DAD106E17BCEE60005A7F56 /* u_complib.framework */,
+				2DD7697917BBA5F4005F1CFB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		2DD7697917BBA5F4005F1CFB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DD7697A17BBA5F4005F1CFB /* AppKit.framework */,
+				2DD7697B17BBA5F4005F1CFB /* CoreData.framework */,
+				2DD7697C17BBA5F4005F1CFB /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		2DD7697D17BBA5F4005F1CFB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				ACF13B9C1DBEC2BB008C0B02 /* bgwidgets.cpp */,
+				ACF13B9D1DBEC2BB008C0B02 /* donut.cpp */,
+				ACF13B9E1DBEC2BB008C0B02 /* RadiusRect.cpp */,
+			);
+			name = Source;
+			path = generic;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DD7697317BBA5F4005F1CFB /* UnicodeCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DD7698617BBA5F4005F1CFB /* Build configuration list for PBXNativeTarget "UnicodeCore" */;
+			buildPhases = (
+				2DD7697017BBA5F4005F1CFB /* Sources */,
+				2DD7697117BBA5F4005F1CFB /* Frameworks */,
+				2DD7697217BBA5F4005F1CFB /* Resources */,
+			);
+			buildRules = (
+				2DDD8B9017F426C100F4E765 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = UnicodeCore;
+			productName = generic;
+			productReference = 2DD7697417BBA5F4005F1CFB /* bgwidgets.u_xcomp */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DD7696C17BBA5F4005F1CFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "TigerLogic Inc";
+			};
+			buildConfigurationList = 2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets_OS80" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				English,
+				english,
+			);
+			mainGroup = 2DD7696B17BBA5F4005F1CFB;
+			productRefGroup = 2DD7697517BBA5F4005F1CFB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DD7697317BBA5F4005F1CFB /* UnicodeCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DD7697217BBA5F4005F1CFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D7DE4B517CE03B300642BA9 /* InfoPlist.strings in Resources */,
+				ACF13BA41DBEC332008C0B02 /* bgwidgets.rc in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DD7697017BBA5F4005F1CFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACF13BA01DBEC2BB008C0B02 /* donut.cpp in Sources */,
+				ACF13BA11DBEC2BB008C0B02 /* RadiusRect.cpp in Sources */,
+				ACF13B9F1DBEC2BB008C0B02 /* bgwidgets.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2D7DE4B217CE03B300642BA9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D7DE4B317CE03B300642BA9 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ACF13BA21DBEC2D0008C0B02 /* bgwidgets.rc */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACF13BA31DBEC2D0008C0B02 /* english */,
+			);
+			name = bgwidgets.rc;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DD7698417BBA5F4005F1CFB /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/../_OSXUnicodeDbg;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fshort-wchar",
+					"-Dismach_o",
+					"-Wno-comment",
+					"-DOMNISSDK=80",
+				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR,
+					$PROJECT_DIR/English.lproj,
+				);
+				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Development;
+		};
+		2DD7698517BBA5F4005F1CFB /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/../_OSXUnicode;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = (
+					"-fshort-wchar",
+					"-Dismach_o",
+					"-Wno-comment",
+					"-DOMNISSDK=80",
+				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR,
+					$PROJECT_DIR/English.lproj,
+				);
+				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Deployment;
+		};
+		2DD7698717BBA5F4005F1CFB /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)";
+				DSTROOT = /;
+				EXPORTED_SYMBOLS_FILE = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../complib\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/../complib/u_complib.framework/Headers/carbnuni.h;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/../complib/u_complib.framework/Headers;
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = $PROJECT_DIR/../_OSXUnicodeDbg;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
+				PRODUCT_NAME = bgwidgets;
+				WRAPPER_EXTENSION = u_xcomp;
+			};
+			name = Development;
+		};
+		2DD7698817BBA5F4005F1CFB /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)";
+				DSTROOT = /;
+				EXPORTED_SYMBOLS_FILE = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../complib\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/../complib/u_complib.framework/Headers/carbnuni.h;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/../complib/u_complib.framework/Headers;
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = $PROJECT_DIR/../_OSXUnicode;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
+				PRODUCT_NAME = bgwidgets;
+				WRAPPER_EXTENSION = u_xcomp;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets_OS80" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD7698417BBA5F4005F1CFB /* Development */,
+				2DD7698517BBA5F4005F1CFB /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		2DD7698617BBA5F4005F1CFB /* Build configuration list for PBXNativeTarget "UnicodeCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DD7698717BBA5F4005F1CFB /* Development */,
+				2DD7698817BBA5F4005F1CFB /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DD7696C17BBA5F4005F1CFB /* Project object */;
+}

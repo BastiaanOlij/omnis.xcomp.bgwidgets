@@ -4,6 +4,7 @@ UDeb
 UDeb64
 URel
 URel64
+UnicodeCore.build
 *.opensdf
 *.sdf
 *.suo
