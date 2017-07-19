@@ -24,6 +24,7 @@
 		96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		96CA4E5A0907E8CC00C234AA /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
 		96CA4E660907EB0700C234AA /* u_complib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CA4E650907EB0700C234AA /* u_complib.framework */; };
+		AC6097E41F1F6E2B00DC40AC /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC6097E31F1F6E2B00DC40AC /* polygon.cpp */; };
 		ACAB36981D79252000456217 /* donut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACAB36971D79252000456217 /* donut.cpp */; };
 		ACAB369B1D79310E00456217 /* donut.bmp in Resources */ = {isa = PBXBuildFile; fileRef = ACAB36991D79310E00456217 /* donut.bmp */; };
 		ACAB369D1D7932DC00456217 /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = ACE1947C1D6C019300AD049F /* bgwidgets.rc */; };
@@ -60,6 +61,8 @@
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		96CA4E610907E8CC00C234AA /* bgwidgets.u_xcomp */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bgwidgets.u_xcomp; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CA4E650907EB0700C234AA /* u_complib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = u_complib.framework; path = ../complib/u_complib.framework; sourceTree = SOURCE_ROOT; };
+		AC6097E21F1F6E1800DC40AC /* polygon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = polygon.h; path = src/polygon.h; sourceTree = "<group>"; usesTabs = 1; };
+		AC6097E31F1F6E2B00DC40AC /* polygon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = polygon.cpp; path = src/polygon.cpp; sourceTree = "<group>"; usesTabs = 1; };
 		ACAB36961D79250700456217 /* donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = donut.h; path = bgwidgets.xcodeproj/../src/donut.h; sourceTree = "<group>"; };
 		ACAB36971D79252000456217 /* donut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = donut.cpp; path = bgwidgets.xcodeproj/../src/donut.cpp; sourceTree = "<group>"; };
 		ACAB36A21D7933CB00456217 /* english */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = english; path = english.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 				ACAB36971D79252000456217 /* donut.cpp */,
 				ACE194781D6C017900AD049F /* bgwidgets.cpp */,
 				ACE194791D6C017900AD049F /* RadiusRect.cpp */,
+				AC6097E31F1F6E2B00DC40AC /* polygon.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -141,6 +145,7 @@
 				ACE194761D6C014A00AD049F /* bgwidgets.h */,
 				ACE194771D6C014A00AD049F /* RadiusRect.h */,
 				ACAB36961D79250700456217 /* donut.h */,
+				AC6097E21F1F6E1800DC40AC /* polygon.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -174,7 +179,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = 96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "bgwidgets" */;
+			buildConfigurationList = 96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "bgwidgets_OS61" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6097E41F1F6E2B00DC40AC /* polygon.cpp in Sources */,
 				ACE1947A1D6C017900AD049F /* bgwidgets.cpp in Sources */,
 				ACAB36981D79252000456217 /* donut.cpp in Sources */,
 				ACE1947B1D6C017900AD049F /* RadiusRect.cpp in Sources */,
@@ -290,6 +296,7 @@
 				INSTALL_PATH = "$(PROJECT_DIR)/../_OSXUnicodeDbg";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
 					"-fshort-wchar",
 					"-Dismach_o",
@@ -331,6 +338,7 @@
 				INSTALL_PATH = "$(PROJECT_DIR)/../_OSXUnicode";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = DYNAMIC;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = (
 					"-fshort-wchar",
 					"-Dismach_o",
@@ -360,7 +368,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				LIBRARY_STYLE = DYNAMIC;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx10.7;
+				SDKROOT = /Projects/xcode/Legacy_SDKs/MacOSX10.7.sdk;
 			};
 			name = Development;
 		};
@@ -370,7 +378,7 @@
 				ARCHS = i386;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx10.7;
+				SDKROOT = /Projects/xcode/Legacy_SDKs/MacOSX10.7.sdk;
 			};
 			name = Deployment;
 		};
@@ -424,7 +432,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
-		96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "bgwidgets" */ = {
+		96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "bgwidgets_OS61" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96CF455F08FBABD1003AA3FE /* Development */,

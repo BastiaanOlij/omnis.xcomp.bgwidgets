@@ -1,6 +1,7 @@
 #include "bgwidgets.h"
 #include "RadiusRect.h"
 #include "donut.h"
+#include "polygon.h"
 
 // Your generic object constructor
 bgwidget::bgwidget(HWND pHwnd, bool pUseHwnd) {
@@ -81,7 +82,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_GETVERSION ask for version info
 		case ECM_GETVERSION: {
 			qshort	major = OMNISSDK;
-			qshort	minor = 2;
+			qshort	minor = 3;
 
 			return ECOreturnVersion(major, minor);
 		} break;
@@ -97,6 +98,9 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
                 }; break;
                 case DONUT_ID: {
                     object = new donut(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+                }; break;
+                case POLYGON_ID: {
+                    object = new polygon(hwnd, !(wParam & ECM_WFLAG_NOHWND));
                 }; break;
                 default: break;
 			};
@@ -158,6 +162,9 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
                 case DONUT_ID: {
                     return ECOreturnIcon(gInstLib, eci, DONUT_ICON);
                 }; break;
+                case POLYGON_ID: {
+                    return ECOreturnIcon(gInstLib, eci, POLYGON_ICON);
+                }; break;
 			};
 			return qfalse;
 		}; break;
@@ -179,6 +186,9 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
                 case 2: {
                     return ECOreturnCompID( gInstLib, eci, DONUT_ID, cObjType_Basic );
                 }; break;
+                case 3: {
+                    return ECOreturnCompID( gInstLib, eci, POLYGON_ID, cObjType_Basic );
+                }; break;
                 default: break;
 			};
 			return 0L;
@@ -194,6 +204,9 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
                 }; break;
                 case DONUT_ID: {
                     return ECOreturnProperties(gInstLib, eci, DonutProperties, donutLast - 1);
+                }; break;
+                case POLYGON_ID: {
+                    return ECOreturnProperties(gInstLib, eci, PolygonProperties, 4 + polygonLast - 1); // add our 4 build in properties to our count
                 }; break;
                 default: break;
             };
