@@ -21,6 +21,9 @@
     <ClInclude Include="src\donut.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="src\polygon.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bgwidgets.cpp">
@@ -30,6 +33,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\donut.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\polygon.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

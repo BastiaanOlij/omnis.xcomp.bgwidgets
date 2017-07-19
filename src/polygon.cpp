@@ -217,6 +217,7 @@ void polygon::paint(HDC hdc, qrect* pArea) {
         qcol		wasForeColor		= GDIgetTextColor(hdc);
         qcol		wasBackColor		= GDIgetBkColor(hdc);
         HBRUSH		patBrush			= GDIcreateBrush(mBackpattern);
+	    HBRUSH      wasBrush			= GDIselectObject(hdc, patBrush);
 		
 		// workaround for SDK bug with GDIfillpoly
 		if (mUseHwnd) {

@@ -287,11 +287,13 @@
   <ItemGroup>
     <ClInclude Include="src\bgwidgets.h" />
     <ClInclude Include="src\donut.h" />
+    <ClInclude Include="src\polygon.h" />
     <ClInclude Include="src\RadiusRect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bgwidgets.cpp" />
     <ClCompile Include="src\donut.cpp" />
+    <ClCompile Include="src\polygon.cpp" />
     <ClCompile Include="src\RadiusRect.cpp" />
   </ItemGroup>
   <ItemGroup>
