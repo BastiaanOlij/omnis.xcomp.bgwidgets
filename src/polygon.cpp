@@ -72,7 +72,7 @@ qbool polygon::setProperty(qlong pPropId, EXTfldval * pSetVal) {
 			pSetVal->getChar(4096, points, len);
 			
 			while (i < len && mNumPoints < MAX_POINTS) {
-				/* note, even though we're dealing with qchar our first 128 characters have the same values */
+				// note, even though we're dealing with qchar our first 128 characters have the same values
 				if (points[i] == '\n' || points[i] == '\r') {
 					if (hasData) {
 						if (hasData && isNegative) {
@@ -264,9 +264,11 @@ void polygon::paint(HDC hdc, qrect* pArea) {
             GDIframePoly(hdc, points, mNumPoints + 1);
 			
 			GDIselectObject(hdc, oldPen);
+			GDIdeleteObject(borderPen);
 		}
     
 		// cleanup
+		GDIselectObject(hdc, wasBrush);
 		GDIdeleteObject(patBrush);
     
 		// leave it as it was...

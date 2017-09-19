@@ -82,7 +82,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_GETVERSION ask for version info
 		case ECM_GETVERSION: {
 			qshort	major = OMNISSDK;
-			qshort	minor = 3;
+			qshort	minor = 4;
 
 			return ECOreturnVersion(major, minor);
 		} break;
@@ -95,12 +95,18 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 			switch (eci->mCompId) {
                 case RADIUSRECT_ID: {
                     object = new radiusrect(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+
+//                    printf("Created radiusrect object %p\n",object);
                 }; break;
                 case DONUT_ID: {
                     object = new donut(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+
+//                    printf("Created donut object %p\n",object);
                 }; break;
                 case POLYGON_ID: {
                     object = new polygon(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+                    
+//                    printf("Created polygon object %p\n",object);
                 }; break;
                 default: break;
 			};
@@ -118,6 +124,8 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 			// this call if ok also removes the object from the chain.
 			bgwidget* object = (bgwidget*)ECOremoveObject( eci, hwnd );
 			if ( NULL!=object ) {
+//                printf("Destruct object %p\n",object);
+                
 				// Now you can delete the object you previous allocated
 				// Note: The hwnd passed on ECM_OBJCONSTRUCT should not be deleted, as
 				// it was created and will be destroyed by OMNIS

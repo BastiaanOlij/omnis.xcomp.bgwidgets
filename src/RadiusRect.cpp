@@ -131,7 +131,7 @@ qbool radiusrect::getProperty(qlong pPropId, EXTfldval * pRetVal) {
 void radiusrect::paint(HDC hdc, qrect* pArea) {
 	qcol		wasForeColor		= GDIgetTextColor(hdc);
 	qcol		wasBackColor		= GDIgetBkColor(hdc);
-	HBRUSH	patBrush				= GDIcreateBrush(mBackpattern);
+	HBRUSH      patBrush			= GDIcreateBrush(mBackpattern);
 
 	if (mBackpattern < 15) {
 		GDIsetTextColor(hdc, mForecolor);
@@ -146,10 +146,11 @@ void radiusrect::paint(HDC hdc, qrect* pArea) {
 		GDIframeRoundRect(hdc, pArea, mRadius, mRadius);
 
 		GDIselectObject(hdc, oldPen);
+        GDIdeleteObject(borderPen);
 	}
 
 	// cleanup
-	GDIdeleteObject(patBrush);
+	GDIdeleteObject(patBrush); // doesn't get set as current so no need to unset..
 
 	// leave it as it was...
 	GDIsetTextColor(hdc, wasForeColor);
