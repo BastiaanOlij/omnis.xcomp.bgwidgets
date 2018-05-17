@@ -9,3 +9,4 @@ UnicodeCore.build
 *.sdf
 *.suo
 *.user
+.vs
