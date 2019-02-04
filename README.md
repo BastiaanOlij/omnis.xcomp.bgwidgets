@@ -16,4 +16,9 @@ To compile download the SDK from the Omnis website and simply clone this within 
   - omnis.xcomp.bgwidgets
   - ...
 
+# Mac OSX
+This folder contains XCode 10 project files that builds this external for Omnis Studio 10.
+Older project files are no longer maintained. 
 
+# Windows
+Windows builds for Omnis Studio 10 coming soon.

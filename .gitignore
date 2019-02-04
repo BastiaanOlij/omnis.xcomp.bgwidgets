@@ -10,3 +10,4 @@ UnicodeCore.build
 *.suo
 *.user
 .vs
+.DS_Store
