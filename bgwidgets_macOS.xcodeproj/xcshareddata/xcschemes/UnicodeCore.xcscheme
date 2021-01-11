@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1130"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2DD7697317BBA5F4005F1CFB"
                BuildableName = "bgwidgets.u_xcomp"
                BlueprintName = "UnicodeCore"
-               ReferencedContainer = "container:bgwidgets10.0.xcodeproj">
+               ReferencedContainer = "container:bgwidgets_macOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Development"
@@ -42,21 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <PathRunnable
-         runnableDebuggingMode = "0"
-         FilePath = "/Applications/Omnis/Studio 10.x Dev/Omnis Studio 10.0.app">
-      </PathRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2DD7697317BBA5F4005F1CFB"
-            BuildableName = "bgwidgets.u_xcomp"
-            BlueprintName = "UnicodeCore"
-            ReferencedContainer = "container:bgwidgets10.0.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Deployment"
@@ -70,7 +53,7 @@
             BlueprintIdentifier = "2DD7697317BBA5F4005F1CFB"
             BuildableName = "bgwidgets.u_xcomp"
             BlueprintName = "UnicodeCore"
-            ReferencedContainer = "container:bgwidgets10.0.xcodeproj">
+            ReferencedContainer = "container:bgwidgets_macOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
