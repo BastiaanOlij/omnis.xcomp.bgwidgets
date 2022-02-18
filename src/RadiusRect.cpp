@@ -3,15 +3,16 @@
 // our properties
 ECOproperty RadiusRectProperties[] = {
 	//  propid      resourceid,     datatype,       propflags                                   propFlags2, enumStart,  enumEnd
-	anumForecolor,		0,		fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,		// $forecolor
-	anumBackcolor,		0,		fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,		// $backcolor
-	anumBorderColor,	0,		fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,   // $bordercolor
-	anumBackpattern,	0,		fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,		// $backpattern
-	rrectRadius,			4000,	fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,		// $radius
-	rrectLineWidth,   4001, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0,		// $linewidth
+	anumForecolor, 0, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $forecolor
+	anumBackcolor, 0, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $backcolor
+	anumBorderColor, 0, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $bordercolor
+	anumBackpattern, 0, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $backpattern
+	rrectRadius, 4000, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $radius
+	rrectLineWidth, 4001, fftInteger, EXTD_FLAG_PROPAPP, 0, 0, 0, // $linewidth
 };
 
-radiusrect::radiusrect(HWND pHwnd, bool pUseHwnd) : bgwidget(pHwnd, pUseHwnd) {
+radiusrect::radiusrect(HWND pHwnd, bool pUseHwnd) :
+		bgwidget(pHwnd, pUseHwnd) {
 	mRadius = 10;
 	mForecolor = GDI_COLOR_QWHITE;
 	mBackcolor = GDI_COLOR_QGRAY;
@@ -43,7 +44,7 @@ qbool radiusrect::propCanAssign(qlong pPropId) {
 		}; break;
 		default: {
 			// huh?
-			
+
 		}; break;
 	};
 
@@ -51,7 +52,7 @@ qbool radiusrect::propCanAssign(qlong pPropId) {
 };
 
 // set a property value
-qbool radiusrect::setProperty(qlong pPropId, EXTfldval * pSetVal) {
+qbool radiusrect::setProperty(qlong pPropId, EXTfldval *pSetVal) {
 	switch (pPropId) {
 		case rrectRadius: {
 			mRadius = pSetVal->getLong();
@@ -85,7 +86,7 @@ qbool radiusrect::setProperty(qlong pPropId, EXTfldval * pSetVal) {
 		}; break;
 		default: {
 			// huh?
-			
+
 		}; break;
 	};
 
@@ -93,7 +94,7 @@ qbool radiusrect::setProperty(qlong pPropId, EXTfldval * pSetVal) {
 };
 
 // get a property value
-qbool radiusrect::getProperty(qlong pPropId, EXTfldval * pRetVal) {
+qbool radiusrect::getProperty(qlong pPropId, EXTfldval *pRetVal) {
 	switch (pPropId) {
 		case rrectRadius: {
 			pRetVal->setLong(mRadius);
@@ -128,10 +129,10 @@ qbool radiusrect::getProperty(qlong pPropId, EXTfldval * pRetVal) {
 };
 
 // You need to paint your control
-void radiusrect::paint(HDC hdc, qrect* pArea) {
-	qcol		wasForeColor		= GDIgetTextColor(hdc);
-	qcol		wasBackColor		= GDIgetBkColor(hdc);
-	HBRUSH      patBrush			= GDIcreateBrush(mBackpattern);
+void radiusrect::paint(HDC hdc, qrect *pArea) {
+	qcol wasForeColor = GDIgetTextColor(hdc);
+	qcol wasBackColor = GDIgetBkColor(hdc);
+	HBRUSH patBrush = GDIcreateBrush(mBackpattern);
 
 	if (mBackpattern < 15) {
 		GDIsetTextColor(hdc, mForecolor);
@@ -140,13 +141,13 @@ void radiusrect::paint(HDC hdc, qrect* pArea) {
 	};
 
 	if (mBorderWidth > 0) {
-		HPEN	borderPen = GDIcreatePen(mBorderWidth, mBorderColor, patFill);
-		HPEN	oldPen		= GDIselectObject(hdc, borderPen);
+		HPEN borderPen = GDIcreatePen(mBorderWidth, mBorderColor, patFill);
+		HPEN oldPen = GDIselectObject(hdc, borderPen);
 
 		GDIframeRoundRect(hdc, pArea, mRadius, mRadius);
 
 		GDIselectObject(hdc, oldPen);
-        GDIdeleteObject(borderPen);
+		GDIdeleteObject(borderPen);
 	}
 
 	// cleanup
