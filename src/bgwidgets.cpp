@@ -10,7 +10,7 @@ bgwidget::bgwidget(HWND pHwnd, bool pUseHwnd) {
 };
 
 // Generic destruction
-bgwidget::~bgwidget() {
+bgwidget::~bgwidget(){
 	// just a placeholder
 };
 
@@ -22,7 +22,6 @@ void bgwidget::invalidate() {
 	};
 };
 
-
 // can we assign this property?
 qbool bgwidget::propCanAssign(qlong pPropId) {
 	// just a placeholder
@@ -30,31 +29,31 @@ qbool bgwidget::propCanAssign(qlong pPropId) {
 };
 
 // set a property value
-qbool bgwidget::setProperty(qlong pPropId, EXTfldval * pSetVal) {
+qbool bgwidget::setProperty(qlong pPropId, EXTfldval *pSetVal) {
 	// just a placeholder
 	return 0L;
 };
 
 // get a property value
-qbool bgwidget::getProperty(qlong pPropId, EXTfldval * pRetVal) {
+qbool bgwidget::getProperty(qlong pPropId, EXTfldval *pRetVal) {
 	// just a placeholder
 
-    return 0L;
+	return 0L;
 };
 
 void bgwidget::UpdateProperty(qlong pPropId) {
-    if (mUseHwnd) {
-        ECOupdatePropInsp(mHwnd, pPropId);
-    };
+	if (mUseHwnd) {
+		ECOupdatePropInsp(mHwnd, pPropId);
+	};
 };
 
 // You need to paint your control
-void bgwidget::paint(HDC hdc, qrect* pArea) {
+void bgwidget::paint(HDC hdc, qrect *pArea){
 	// just a placeholder
 };
 
 // Component library entry point (name as declared in resource 31000 )
-extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wParam, LPARAM lParam, EXTCompInfo* eci) {
+extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wParam, LPARAM lParam, EXTCompInfo *eci) {
 	// Initialize callback tables - THIS MUST BE DONE
 	ECOsetupCallbacks(hwnd, eci);
 	switch (Msg) {
@@ -69,9 +68,9 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_PRINT - background objects get this instead of the WM_PAINT as they are painted directly on the main window
 		case ECM_PRINT: {
 			// First find the object in the libraries chain of objects
-			WNDpaintStruct* paintStruct = (WNDpaintStruct*)lParam;
+			WNDpaintStruct *paintStruct = (WNDpaintStruct *)lParam;
 
-			bgwidget* object = (bgwidget*)ECOfindObject(eci, hwnd);
+			bgwidget *object = (bgwidget *)ECOfindObject(eci, hwnd);
 			// and if its good, call the paint function
 			if (object != NULL) {
 				object->paint(paintStruct->hdc, &paintStruct->rcPaint);
@@ -81,51 +80,50 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 
 		// ECM_GETVERSION ask for version info
 		case ECM_GETVERSION: {
-			qshort	major = OMNISSDK;
-			qshort	minor = 4;
+			qshort major = OMNISSDK;
+			qshort minor = 4;
 
 			return ECOreturnVersion(major, minor);
 		} break;
 
-
 		// ECM_OBJCONSTRUCT - this is a message to create a new object.
 		case ECM_OBJCONSTRUCT: {
 			// Allocate a new object, for now always assume its radiusrect
-			bgwidget* object = NULL;
+			bgwidget *object = NULL;
 			switch (eci->mCompId) {
-                case RADIUSRECT_ID: {
-                    object = new radiusrect(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+				case RADIUSRECT_ID: {
+					object = new radiusrect(hwnd, !(wParam & ECM_WFLAG_NOHWND));
 
-//                    printf("Created radiusrect object %p\n",object);
-                }; break;
-                case DONUT_ID: {
-                    object = new donut(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+					//                    printf("Created radiusrect object %p\n",object);
+				}; break;
+				case DONUT_ID: {
+					object = new donut(hwnd, !(wParam & ECM_WFLAG_NOHWND));
 
-//                    printf("Created donut object %p\n",object);
-                }; break;
-                case POLYGON_ID: {
-                    object = new polygon(hwnd, !(wParam & ECM_WFLAG_NOHWND));
-                    
-//                    printf("Created polygon object %p\n",object);
-                }; break;
-                default: break;
+					//                    printf("Created donut object %p\n",object);
+				}; break;
+				case POLYGON_ID: {
+					object = new polygon(hwnd, !(wParam & ECM_WFLAG_NOHWND));
+
+					//                    printf("Created polygon object %p\n",object);
+				}; break;
+				default: break;
 			};
 
-            if (object != NULL) {
-                // and insert into a chain of objects. The OMNIS library will maintain this chain
-                ECOinsertObject( eci, hwnd, (void*)object );
-                return qtrue;
-            };
+			if (object != NULL) {
+				// and insert into a chain of objects. The OMNIS library will maintain this chain
+				ECOinsertObject(eci, hwnd, (void *)object);
+				return qtrue;
+			};
 		}; break;
-			
+
 		// ECM_OBJDESTRUCT - this is a message to inform you to delete the object
 		case ECM_OBJDESTRUCT: {
 			// First find the object in the libraries chain of objects,
 			// this call if ok also removes the object from the chain.
-			bgwidget* object = (bgwidget*)ECOremoveObject( eci, hwnd );
-			if ( NULL!=object ) {
-//                printf("Destruct object %p\n",object);
-                
+			bgwidget *object = (bgwidget *)ECOremoveObject(eci, hwnd);
+			if (NULL != object) {
+				//                printf("Destruct object %p\n",object);
+
 				// Now you can delete the object you previous allocated
 				// Note: The hwnd passed on ECM_OBJCONSTRUCT should not be deleted, as
 				// it was created and will be destroyed by OMNIS
@@ -133,7 +131,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 			};
 			return qtrue;
 		}; break;
-	 		
+
 		// ECM_CONNECT - this message is sent once per OMNIS session and should not be confused
 		// with ECM_OBJCONSTRUCT which is sent once per object. ECM_CONNECT can be used if load other libraries
 		// once or other general global actions that need to be done only once.
@@ -142,7 +140,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		case ECM_CONNECT: {
 			return EXT_FLAG_LOADED | EXT_FLAG_BCOMPONENTS | EXT_FLAG_ALWAYS_USABLE | EXT_FLAG_REMAINLOADED; // Return external flags
 		}; break;
-      
+
 		// ECM_DISCONNECT - this message is sent only once when the OMNIS session is ending and should not be confused
 		// with ECM_OBJDESTRUCT which is sent once per object. ECM_DISCONNECT can be used to free other libraries
 		// loaded on ECM_CONNECT or other general global actions that need to be done only once.
@@ -155,7 +153,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_GETCOMPLIBINFO - this is sent by OMNIS to find out the name of the library, and
 		// the number of components this library supports
 		case ECM_GETCOMPLIBINFO: {
-			return ECOreturnCompInfo( gInstLib, eci, LIB_RES_NAME, OBJECT_COUNT );
+			return ECOreturnCompInfo(gInstLib, eci, LIB_RES_NAME, OBJECT_COUNT);
 		}; break;
 
 		// ECM_GETCOMPICON - this is sent by OMNIS to get an icon for the OMNIS component store and
@@ -164,15 +162,15 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 			// OMNIS will call you once per component for an icon.
 			// GENERIC_ICON is defined in the header and included in the resource file
 			switch (eci->mCompId) {
-                case RADIUSRECT_ID: {
-                    return ECOreturnIcon(gInstLib, eci, RADIUSRECT_ICON);
-                }; break;
-                case DONUT_ID: {
-                    return ECOreturnIcon(gInstLib, eci, DONUT_ICON);
-                }; break;
-                case POLYGON_ID: {
-                    return ECOreturnIcon(gInstLib, eci, POLYGON_ICON);
-                }; break;
+				case RADIUSRECT_ID: {
+					return ECOreturnIcon(gInstLib, eci, RADIUSRECT_ICON);
+				}; break;
+				case DONUT_ID: {
+					return ECOreturnIcon(gInstLib, eci, DONUT_ICON);
+				}; break;
+				case POLYGON_ID: {
+					return ECOreturnIcon(gInstLib, eci, POLYGON_ICON);
+				}; break;
 			};
 			return qfalse;
 		}; break;
@@ -188,51 +186,51 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// 																	There are others 	- see BLYTH examples and headers
 		case ECM_GETCOMPID: {
 			switch (wParam) {
-                case 1: {
-                    return ECOreturnCompID( gInstLib, eci, RADIUSRECT_ID, cObjType_Basic );
-                }; break;
-                case 2: {
-                    return ECOreturnCompID( gInstLib, eci, DONUT_ID, cObjType_Basic );
-                }; break;
-                case 3: {
-                    return ECOreturnCompID( gInstLib, eci, POLYGON_ID, cObjType_Basic );
-                }; break;
-                default: break;
+				case 1: {
+					return ECOreturnCompID(gInstLib, eci, RADIUSRECT_ID, cObjType_Basic);
+				}; break;
+				case 2: {
+					return ECOreturnCompID(gInstLib, eci, DONUT_ID, cObjType_Basic);
+				}; break;
+				case 3: {
+					return ECOreturnCompID(gInstLib, eci, POLYGON_ID, cObjType_Basic);
+				}; break;
+				default: break;
 			};
 			return 0L;
 		}; break;
-            
-		////////////////////////////////////////////////////////////////////////
-		// stuff for properties
-        
+
+			////////////////////////////////////////////////////////////////////////
+			// stuff for properties
+
 		case ECM_GETPROPNAME: {
-            switch (eci->mCompId) {
-                case RADIUSRECT_ID: {
-                    return ECOreturnProperties(gInstLib, eci, RadiusRectProperties, 4 + rrectlast - 1); // add our 4 build in properties to our count
-                }; break;
-                case DONUT_ID: {
-                    return ECOreturnProperties(gInstLib, eci, DonutProperties, donutLast - 1);
-                }; break;
-                case POLYGON_ID: {
-                    return ECOreturnProperties(gInstLib, eci, PolygonProperties, 4 + polygonLast - 1); // add our 4 build in properties to our count
-                }; break;
-                default: break;
-            };
+			switch (eci->mCompId) {
+				case RADIUSRECT_ID: {
+					return ECOreturnProperties(gInstLib, eci, RadiusRectProperties, 4 + rrectlast - 1); // add our 4 build in properties to our count
+				}; break;
+				case DONUT_ID: {
+					return ECOreturnProperties(gInstLib, eci, DonutProperties, donutLast - 1);
+				}; break;
+				case POLYGON_ID: {
+					return ECOreturnProperties(gInstLib, eci, PolygonProperties, 4 + polygonLast - 1); // add our 4 build in properties to our count
+				}; break;
+				default: break;
+			};
 		}; break;
-        
+
 		case ECM_PROPERTYCANASSIGN: {
-			bgwidget* object = (bgwidget*)ECOfindObject(eci, hwnd);
+			bgwidget *object = (bgwidget *)ECOfindObject(eci, hwnd);
 			if (object != NULL) {
 				return object->propCanAssign(ECOgetId(eci));
 			};
 		}; break;
 
 		case ECM_SETPROPERTY: {
-			bgwidget* object = (bgwidget*)ECOfindObject(eci, hwnd);
+			bgwidget *object = (bgwidget *)ECOfindObject(eci, hwnd);
 			if (object != NULL) {
-				EXTParamInfo* param = ECOfindParamNum( eci, 1 );
-				if ( param ) {
-					EXTfldval fval( (qfldval)param->mData );
+				EXTParamInfo *param = ECOfindParamNum(eci, 1);
+				if (param) {
+					EXTfldval fval((qfldval)param->mData);
 					qbool result = object->setProperty(ECOgetId(eci), &fval);
 					if (result == 1L) {
 						return 1L;
@@ -242,27 +240,27 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		}; break;
 
 		case ECM_GETPROPERTY: {
-			bgwidget* object = (bgwidget*)ECOfindObject(eci, hwnd);
+			bgwidget *object = (bgwidget *)ECOfindObject(eci, hwnd);
 			if (object != NULL) {
 				EXTfldval fval;
 				qbool result = object->getProperty(ECOgetId(eci), &fval);
 				if (result == 1L) {
-					ECOaddParam(eci,&fval);
+					ECOaddParam(eci, &fval);
 					return 1L;
 				};
 			};
 		}; break;
 
-		case ECM_ISUNICODE:	{
-			#ifdef isunicode
-				return qtrue;
-			#else
-				return qfalse;
-			#endif
+		case ECM_ISUNICODE: {
+#ifdef isunicode
+			return qtrue;
+#else
+			return qfalse;
+#endif
 		}; break;
-	 };
+	};
 
-	 // As a final result this must ALWAYS be called. It handles all other messages that this component
-	 // decides to ignore.
-	 return WNDdefWindowProc(hwnd,Msg,wParam,lParam,eci);
+	// As a final result this must ALWAYS be called. It handles all other messages that this component
+	// decides to ignore.
+	return WNDdefWindowProc(hwnd, Msg, wParam, lParam, eci);
 };
