@@ -10,13 +10,13 @@
 		2D7DE4B517CE03B300642BA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D7DE4B217CE03B300642BA9 /* InfoPlist.strings */; };
 		2DAD106F17BCEE60005A7F56 /* u_complib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAD106E17BCEE60005A7F56 /* u_complib.framework */; };
 		2DD7697817BBA5F4005F1CFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD7697717BBA5F4005F1CFB /* Cocoa.framework */; };
-		E30917662207D96200FB1039 /* donut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E30917622207D96200FB1039 /* donut.cpp */; };
-		E30917672207D96200FB1039 /* RadiusRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E30917632207D96200FB1039 /* RadiusRect.cpp */; };
-		E30917682207D96200FB1039 /* bgwidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E30917642207D96200FB1039 /* bgwidgets.cpp */; };
-		E30917692207D96200FB1039 /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E30917652207D96200FB1039 /* polygon.cpp */; };
-		E30917702207D97300FB1039 /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = E309176A2207D97200FB1039 /* bgwidgets.rc */; };
-		E30917712207D97300FB1039 /* donut.bmp in Resources */ = {isa = PBXBuildFile; fileRef = E309176C2207D97300FB1039 /* donut.bmp */; };
-		E30917722207D97300FB1039 /* radiusrect.bmp in Resources */ = {isa = PBXBuildFile; fileRef = E309176E2207D97300FB1039 /* radiusrect.bmp */; };
+		E35E3E2C27C322C700A81C66 /* donut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35E3E2827C322C700A81C66 /* donut.cpp */; };
+		E35E3E2D27C322C700A81C66 /* RadiusRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35E3E2927C322C700A81C66 /* RadiusRect.cpp */; };
+		E35E3E2E27C322C700A81C66 /* bgwidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35E3E2A27C322C700A81C66 /* bgwidgets.cpp */; };
+		E35E3E2F27C322C700A81C66 /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35E3E2B27C322C700A81C66 /* polygon.cpp */; };
+		E35E3E3627C322D800A81C66 /* bgwidgets.rc in Resources */ = {isa = PBXBuildFile; fileRef = E35E3E3027C322D800A81C66 /* bgwidgets.rc */; };
+		E35E3E3727C322D800A81C66 /* donut.bmp in Resources */ = {isa = PBXBuildFile; fileRef = E35E3E3227C322D800A81C66 /* donut.bmp */; };
+		E35E3E3827C322D800A81C66 /* radiusrect.bmp in Resources */ = {isa = PBXBuildFile; fileRef = E35E3E3427C322D800A81C66 /* radiusrect.bmp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -29,9 +29,9 @@
 			);
 			isEditable = 1;
 			outputFiles = (
-				"$(TEMP_FILE_DIR)/omnisrc/Localizable.strings",
+				"$(INPUT_FILE_DIR)/Localizable.strings",
 			);
-			script = "$PROJECT_DIR/../tools/omnisrc64.app/Contents/MacOS/omnisrc64 INPUT_FILE_PATH TEMP_FILE_DIR REZ_SEARCH_PATHS XCOMP\nif [ -f $TEMP_FILE_DIR/omnisrc/Bitmap.strings ]; then\ncp $TEMP_FILE_DIR/omnisrc/Bitmap.strings $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi\nshopt -s nullglob\nif [ ! -z \"`echo $TEMP_FILE_DIR/omnisrc/*.PNG`\" ]; then\ncp $TEMP_FILE_DIR/omnisrc/*.PNG $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi\n";
+			script = "$PROJECT_DIR/thirdparty/omnis.sdk/mac/tools/omnisrc64.app/Contents/MacOS/omnisrc64 INPUT_FILE_PATH TEMP_FILE_DIR REZ_SEARCH_PATHS XCOMP\nif [ -f $TEMP_FILE_DIR/omnisrc/Bitmap.strings ]; then\ncp $TEMP_FILE_DIR/omnisrc/Bitmap.strings $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi\ncp -R $TEMP_FILE_DIR/omnisrc/ $INPUT_FILE_DIR\n\nshopt -s nullglob\nif [ ! -z \"`echo $TEMP_FILE_DIR/omnisrc/*.PNG`\" ]; then\ncp $TEMP_FILE_DIR/omnisrc/*.PNG $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources\nfi\ncp -R $TEMP_FILE_DIR/omnisrc/ $INPUT_FILE_DIR\n";
 		};
 /* End PBXBuildRule section */
 
@@ -43,17 +43,17 @@
 		2DD7697A17BBA5F4005F1CFB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2DD7697B17BBA5F4005F1CFB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2DD7697C17BBA5F4005F1CFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E309175E2207D95300FB1039 /* bgwidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bgwidgets.h; path = src/bgwidgets.h; sourceTree = "<group>"; };
-		E309175F2207D95300FB1039 /* RadiusRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadiusRect.h; path = src/RadiusRect.h; sourceTree = "<group>"; };
-		E30917602207D95300FB1039 /* donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = donut.h; path = src/donut.h; sourceTree = "<group>"; };
-		E30917612207D95300FB1039 /* polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = polygon.h; path = src/polygon.h; sourceTree = "<group>"; };
-		E30917622207D96200FB1039 /* donut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = donut.cpp; path = src/donut.cpp; sourceTree = "<group>"; };
-		E30917632207D96200FB1039 /* RadiusRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadiusRect.cpp; path = src/RadiusRect.cpp; sourceTree = "<group>"; };
-		E30917642207D96200FB1039 /* bgwidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bgwidgets.cpp; path = src/bgwidgets.cpp; sourceTree = "<group>"; };
-		E30917652207D96200FB1039 /* polygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = polygon.cpp; path = src/polygon.cpp; sourceTree = "<group>"; };
-		E309176B2207D97200FB1039 /* english */ = {isa = PBXFileReference; lastKnownFileType = text; name = english; path = english.lproj/bgwidgets.rc; sourceTree = "<group>"; };
-		E309176D2207D97300FB1039 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/donut.bmp; sourceTree = "<group>"; };
-		E309176F2207D97300FB1039 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/radiusrect.bmp; sourceTree = "<group>"; };
+		E35E3E2427C322AB00A81C66 /* donut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = donut.h; path = src/donut.h; sourceTree = "<group>"; };
+		E35E3E2527C322AB00A81C66 /* RadiusRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadiusRect.h; path = src/RadiusRect.h; sourceTree = "<group>"; };
+		E35E3E2627C322AB00A81C66 /* bgwidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bgwidgets.h; path = src/bgwidgets.h; sourceTree = "<group>"; };
+		E35E3E2727C322AB00A81C66 /* polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = polygon.h; path = src/polygon.h; sourceTree = "<group>"; };
+		E35E3E2827C322C700A81C66 /* donut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = donut.cpp; path = src/donut.cpp; sourceTree = SOURCE_ROOT; };
+		E35E3E2927C322C700A81C66 /* RadiusRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RadiusRect.cpp; path = src/RadiusRect.cpp; sourceTree = SOURCE_ROOT; };
+		E35E3E2A27C322C700A81C66 /* bgwidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bgwidgets.cpp; path = src/bgwidgets.cpp; sourceTree = SOURCE_ROOT; };
+		E35E3E2B27C322C700A81C66 /* polygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = polygon.cpp; path = src/polygon.cpp; sourceTree = SOURCE_ROOT; };
+		E35E3E3127C322D800A81C66 /* english */ = {isa = PBXFileReference; lastKnownFileType = text; name = english; path = english.lproj/bgwidgets.rc; sourceTree = "<group>"; };
+		E35E3E3327C322D800A81C66 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/donut.bmp; sourceTree = "<group>"; };
+		E35E3E3527C322D800A81C66 /* english */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = english; path = english.lproj/radiusrect.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +72,10 @@
 		2D3F845B17C50A43008A8E5D /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				E309175E2207D95300FB1039 /* bgwidgets.h */,
-				E30917602207D95300FB1039 /* donut.h */,
-				E30917612207D95300FB1039 /* polygon.h */,
-				E309175F2207D95300FB1039 /* RadiusRect.h */,
+				E35E3E2627C322AB00A81C66 /* bgwidgets.h */,
+				E35E3E2427C322AB00A81C66 /* donut.h */,
+				E35E3E2727C322AB00A81C66 /* polygon.h */,
+				E35E3E2527C322AB00A81C66 /* RadiusRect.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -83,9 +83,9 @@
 		2D7DE4AF17CE02C100642BA9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E309176A2207D97200FB1039 /* bgwidgets.rc */,
-				E309176C2207D97300FB1039 /* donut.bmp */,
-				E309176E2207D97300FB1039 /* radiusrect.bmp */,
+				E35E3E3027C322D800A81C66 /* bgwidgets.rc */,
+				E35E3E3227C322D800A81C66 /* donut.bmp */,
+				E35E3E3427C322D800A81C66 /* radiusrect.bmp */,
 				2D7DE4B217CE03B300642BA9 /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -133,12 +133,13 @@
 		2DD7697D17BBA5F4005F1CFB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E30917642207D96200FB1039 /* bgwidgets.cpp */,
-				E30917622207D96200FB1039 /* donut.cpp */,
-				E30917652207D96200FB1039 /* polygon.cpp */,
-				E30917632207D96200FB1039 /* RadiusRect.cpp */,
+				E35E3E2A27C322C700A81C66 /* bgwidgets.cpp */,
+				E35E3E2827C322C700A81C66 /* donut.cpp */,
+				E35E3E2B27C322C700A81C66 /* polygon.cpp */,
+				E35E3E2927C322C700A81C66 /* RadiusRect.cpp */,
 			);
 			name = Source;
+			path = generic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +172,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Omnis Software Ltd";
 			};
-			buildConfigurationList = 2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets_macOS" */;
+			buildConfigurationList = 2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -196,9 +197,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D7DE4B517CE03B300642BA9 /* InfoPlist.strings in Resources */,
-				E30917722207D97300FB1039 /* radiusrect.bmp in Resources */,
-				E30917712207D97300FB1039 /* donut.bmp in Resources */,
-				E30917702207D97300FB1039 /* bgwidgets.rc in Resources */,
+				E35E3E3827C322D800A81C66 /* radiusrect.bmp in Resources */,
+				E35E3E3727C322D800A81C66 /* donut.bmp in Resources */,
+				E35E3E3627C322D800A81C66 /* bgwidgets.rc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,10 +210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30917662207D96200FB1039 /* donut.cpp in Sources */,
-				E30917672207D96200FB1039 /* RadiusRect.cpp in Sources */,
-				E30917682207D96200FB1039 /* bgwidgets.cpp in Sources */,
-				E30917692207D96200FB1039 /* polygon.cpp in Sources */,
+				E35E3E2E27C322C700A81C66 /* bgwidgets.cpp in Sources */,
+				E35E3E2F27C322C700A81C66 /* polygon.cpp in Sources */,
+				E35E3E2D27C322C700A81C66 /* RadiusRect.cpp in Sources */,
+				E35E3E2C27C322C700A81C66 /* donut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,26 +228,26 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		E309176A2207D97200FB1039 /* bgwidgets.rc */ = {
+		E35E3E3027C322D800A81C66 /* bgwidgets.rc */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E309176B2207D97200FB1039 /* english */,
+				E35E3E3127C322D800A81C66 /* english */,
 			);
 			name = bgwidgets.rc;
 			sourceTree = "<group>";
 		};
-		E309176C2207D97300FB1039 /* donut.bmp */ = {
+		E35E3E3227C322D800A81C66 /* donut.bmp */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E309176D2207D97300FB1039 /* english */,
+				E35E3E3327C322D800A81C66 /* english */,
 			);
 			name = donut.bmp;
 			sourceTree = "<group>";
 		};
-		E309176E2207D97300FB1039 /* radiusrect.bmp */ = {
+		E35E3E3427C322D800A81C66 /* radiusrect.bmp */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E309176F2207D97300FB1039 /* english */,
+				E35E3E3527C322D800A81C66 /* english */,
 			);
 			name = radiusrect.bmp;
 			sourceTree = "<group>";
@@ -267,7 +268,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/../_OSXUnicodeDbg;
+				CODE_SIGN_IDENTITY = "";
+				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/_OSXUnicodeDbg;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
@@ -284,12 +286,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-fshort-wchar",
 					"-Dismach_o",
 					"-Wno-comment",
+					"-DOMNISSDK=102",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				REZ_SEARCH_PATHS = (
@@ -314,7 +317,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/../_OSXUnicode;
+				CODE_SIGN_IDENTITY = "";
+				CONFIGURATION_BUILD_DIR = $PROJECT_DIR/_OSXUnicode;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
@@ -325,11 +329,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"-fshort-wchar",
 					"-Dismach_o",
 					"-Wno-comment",
+					"-DOMNISSDK=102",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				REZ_SEARCH_PATHS = (
@@ -345,27 +350,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)";
 				DSTROOT = /;
 				EXPORTED_SYMBOLS_FILE = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../complib\"",
+					"\"$(SRCROOT)/thirdparty/omnis.sdk/mac/complib\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = $PROJECT_DIR/../complib/u_complib.framework/Headers/carbnuni.h;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/thirdparty/omnis.sdk/mac/complib/u_complib.framework/Headers/carbnuni.h;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/../complib/u_complib.framework/Headers;
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/thirdparty/omnis.sdk/mac/complib/u_complib.framework/Headers;
 				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
-				INSTALL_PATH = $PROJECT_DIR/../_OSXUnicodeDbg;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				OTHER_CFLAGS = (
-					"-fshort-wchar",
-					"-Dismach_o",
-					"-Wno-comment",
-					"-DOMNISSDK=102",
-				);
+				INSTALL_PATH = $PROJECT_DIR/_OSXUnicodeDbg;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "";
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = omnis.xcomp.bgwidgets;
@@ -378,27 +378,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)";
 				DSTROOT = /;
 				EXPORTED_SYMBOLS_FILE = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../complib\"",
+					"\"$(SRCROOT)/thirdparty/omnis.sdk/mac/complib\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = $PROJECT_DIR/../complib/u_complib.framework/Headers/carbnuni.h;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/thirdparty/omnis.sdk/mac/complib/u_complib.framework/Headers/carbnuni.h;
 				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/../complib/u_complib.framework/Headers;
+				HEADER_SEARCH_PATHS = $PROJECT_DIR/thirdparty/omnis.sdk/mac/complib/u_complib.framework/Headers;
 				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
-				INSTALL_PATH = $PROJECT_DIR/../_OSXUnicode;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				OTHER_CFLAGS = (
-					"-fshort-wchar",
-					"-Dismach_o",
-					"-Wno-comment",
-					"-DOMNISSDK=102",
-				);
+				INSTALL_PATH = $PROJECT_DIR/_OSXUnicode;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "";
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = omnis.xcomp.bgwidgets;
@@ -410,7 +405,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets_macOS" */ = {
+		2DD7696F17BBA5F4005F1CFB /* Build configuration list for PBXProject "bgwidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DD7698417BBA5F4005F1CFB /* Development */,
