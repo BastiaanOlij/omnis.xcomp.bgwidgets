@@ -1,0 +1,16 @@
+{
+"COMP_RES_1000" = "Background widgets Library";
+"COMP_RES_2000" = "RadiusRect";
+"COMP_RES_2001" = "Donut";
+"COMP_RES_2002" = "Polygon";
+"COMP_RES_4000" = "$radius:Radius of our corners";
+"COMP_RES_4001" = "$linewidth:Width of our border (0 = no border)";
+"COMP_RES_4010" = "$innerradius:Inner radius of donut";
+"COMP_RES_4011" = "$basecolor:Base color of donut";
+"COMP_RES_4012" = "$colorindex:Index into our color array";
+"COMP_RES_4013" = "$colorangle:Angle at which to start the color";
+"COMP_RES_4014" = "$color:Color from this angle forward";
+"COMP_RES_4015" = "$offsetangle:Offset angle";
+"COMP_RES_4020" = "$points:Points on our polygon";
+"COMP_RES_31000" = "bgwidgetsWndProc";
+}
