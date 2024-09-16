@@ -81,7 +81,7 @@ extern "C" LRESULT OMNISWNDPROC bgwidgetsWndProc(HWND hwnd, UINT Msg, WPARAM wPa
 		// ECM_GETVERSION ask for version info
 		case ECM_GETVERSION: {
 			qshort major = OMNISSDK;
-			qshort minor = 4;
+			qshort minor = 5;
 
 			return ECOreturnVersion(major, minor);
 		} break;
