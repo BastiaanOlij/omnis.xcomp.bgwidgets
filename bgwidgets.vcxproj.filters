@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="bgwidgets.DEF" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\bgwidgets.h">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClInclude Include="src\donut.h">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClInclude Include="src\polygon.h">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClInclude Include="src\RediusRect.h">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{042c8f37-28e8-4eac-833d-4d8cd3ba4f61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{10e9e5b8-e8a7-4a18-a057-3e0006209318}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\bgwidgets.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\donut.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\polygon.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RediusRect.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\radiusrect.bmp">
+      <Filter>resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\bgwidgets.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
